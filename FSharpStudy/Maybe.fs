@@ -1,16 +1,16 @@
-﻿module Option
+﻿module Maybe
 
-type OptionBuilder() =
+type MaybeBuilder() =
   member __.Bind(x, f) =
     match x with
     | Some v -> f v
     | None -> None
   member __.Return(x) = Some x
 
-let option = OptionBuilder()
+let maybe = MaybeBuilder()
 
-let tryOption opt1 opt2 opt3 =
-  option {
+let add3 opt1 opt2 opt3 =
+  maybe {
     let! x = opt1
     let! y = opt2
     let! z = opt3
